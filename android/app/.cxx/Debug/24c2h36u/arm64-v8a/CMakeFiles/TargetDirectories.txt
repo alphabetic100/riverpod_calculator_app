@@ -1,0 +1,2 @@
+/home/alphabetic100/flutter projects/riverpod_calculator_app/android/app/.cxx/Debug/24c2h36u/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/alphabetic100/flutter projects/riverpod_calculator_app/android/app/.cxx/Debug/24c2h36u/arm64-v8a/CMakeFiles/rebuild_cache.dir

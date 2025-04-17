@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "/home/alphabetic100/Downloads/flutter_linux_3.24.5-stable/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/alphabetic100/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/alphabetic100/flutter projects/riverpod_calculator_app/android/app/.cxx/Debug/24c2h36u/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/alphabetic100/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/alphabetic100/flutter projects/riverpod_calculator_app/android/app/.cxx/Debug/24c2h36u/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {},
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/alphabetic100/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/alphabetic100/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": []
+}

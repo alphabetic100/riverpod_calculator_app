@@ -36,9 +36,9 @@ class HomeScreen extends StatelessWidget {
                   // Calculator view
                 ],
               ),
-              const Spacer(),
-              const InputField(),
 
+              const InputField(),
+              Expanded(child: Container()),
               SizedBox.fromSize(size: const Size.fromHeight(20)),
               const Row(
                 children: [
@@ -77,55 +77,76 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const Row(
-                children: [
-                  Expanded(flex: 8, child: NumberPad()),
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      children: [
-                        ActionButton(
-                          text: "-",
-                          color: AppColors.deepBlue,
-                          textColor: AppColors.lightBlue,
-                          fontSize: 40,
-                        ),
-                        ActionButton(
-                          text: "+",
-                          color: AppColors.deepBlue,
-                          textColor: AppColors.lightBlue,
-                          fontSize: 40,
-                        ),
-                        ActionButton(
-                          text: "=",
-                          color: Color(0xFF1991FF),
-                          textColor: Color(0xFFB2DAFF),
-                          fontSize: 50,
-                        ),
-                      ],
+
+              const Expanded(
+                flex: 7,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 8,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(flex: 7, child: NumberPad()),
+
+                          //Bottom buttons
+                          Expanded(
+                            flex: 2,
+
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Expanded(
+                                  flex: 3,
+                                  child: ActionButton(
+                                    text: "0",
+                                    color: AppColors.deepBlue,
+                                    textColor: AppColors.lightBlue,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: ActionButton(
+                                    text: ".",
+                                    color: AppColors.deepBlue,
+                                    textColor: AppColors.lightBlue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const Row(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: ActionButton(
-                      text: "0",
-                      color: AppColors.deepBlue,
-                      textColor: AppColors.lightBlue,
+
+                    //Side buttons
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        children: [
+                          ActionButton(
+                            text: "-",
+                            color: AppColors.deepBlue,
+                            textColor: AppColors.lightBlue,
+                          ),
+                          ActionButton(
+                            text: "+",
+                            color: AppColors.deepBlue,
+                            textColor: AppColors.lightBlue,
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: ActionButton(
+                              text: "=",
+                              color: Color(0xFF1991FF),
+                              textColor: Color(0xFFB2DAFF),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: ActionButton(
-                      text: ".",
-                      color: AppColors.deepBlue,
-                      textColor: AppColors.lightBlue,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

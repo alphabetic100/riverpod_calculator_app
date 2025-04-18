@@ -12,6 +12,7 @@ class NumberPad extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 9,
+      reverse: true,
       padding: const EdgeInsets.only(top: 10),
       // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       //   crossAxisCount: 4,
@@ -36,7 +37,7 @@ class NumberPad extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                index.toString(),
+                (index + 1).toString(),
                 style: const TextStyle(
                   color: AppColors.lightBlue,
                   fontSize: 30,

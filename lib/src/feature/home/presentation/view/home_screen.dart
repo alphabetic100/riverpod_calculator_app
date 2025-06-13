@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_calculator_app/src/core/utils/colors/app_colors.dart';
 import 'package:riverpod_calculator_app/src/feature/home/presentation/widget/action_button.dart';
 import 'package:riverpod_calculator_app/src/feature/home/presentation/widget/input_field.dart';
 import 'package:riverpod_calculator_app/src/feature/home/presentation/widget/number_pad.dart';
+import 'package:riverpod_calculator_app/src/feature/home/provider/home_screen_provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   static const String homeScreen = "/";
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: const Color(0xFF17181A),
       body: SafeArea(
@@ -37,13 +39,14 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
 
-              const InputField(),
+              InputField(),
               Expanded(child: Container()),
               SizedBox.fromSize(size: const Size.fromHeight(20)),
-              const Row(
+              Row(
                 children: [
                   Expanded(
                     child: ActionButton(
+                      onTap: () => HomeScreenProvider.clearAll(ref),
                       text: "AC",
                       color: AppColors.grey,
                       textColor: Colors.grey,
@@ -52,6 +55,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: ActionButton(
+                      onTap: () => HomeScreenProvider.clear(ref),
                       text: "C",
                       color: AppColors.grey,
                       textColor: Colors.grey,
@@ -60,6 +64,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: ActionButton(
+                      onTap: () => HomeScreenProvider.input(ref, value: "/"),
                       text: "/",
                       color: AppColors.deepBlue,
                       textColor: AppColors.lightBlue,
@@ -68,6 +73,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: ActionButton(
+                      onTap: () => HomeScreenProvider.input(ref, value: "*"),
                       text: "*",
                       color: AppColors.deepBlue,
                       textColor: AppColors.lightBlue,
@@ -78,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
 
-              const Expanded(
+              Expanded(
                 flex: 7,
                 child: Row(
                   children: [
@@ -87,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Expanded(flex: 7, child: NumberPad()),
+                          const Expanded(flex: 7, child: NumberPad()),
 
                           //Bottom buttons
                           Expanded(
@@ -99,6 +105,11 @@ class HomeScreen extends StatelessWidget {
                                 Expanded(
                                   flex: 3,
                                   child: ActionButton(
+                                    onTap:
+                                        () => HomeScreenProvider.input(
+                                          ref,
+                                          value: "0",
+                                        ),
                                     text: "0",
                                     color: AppColors.deepBlue,
                                     textColor: AppColors.lightBlue,
@@ -107,6 +118,12 @@ class HomeScreen extends StatelessWidget {
                                 Expanded(
                                   flex: 2,
                                   child: ActionButton(
+                                    onTap:
+                                        () => HomeScreenProvider.input(
+                                          ref,
+                                          value: ".",
+                                        ),
+
                                     text: ".",
                                     color: AppColors.deepBlue,
                                     textColor: AppColors.lightBlue,
@@ -125,11 +142,17 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           ActionButton(
+                            onTap:
+                                () => HomeScreenProvider.input(ref, value: "-"),
+
                             text: "-",
                             color: AppColors.deepBlue,
                             textColor: AppColors.lightBlue,
                           ),
                           ActionButton(
+                            onTap:
+                                () => HomeScreenProvider.input(ref, value: "+"),
+
                             text: "+",
                             color: AppColors.deepBlue,
                             textColor: AppColors.lightBlue,
@@ -137,9 +160,11 @@ class HomeScreen extends StatelessWidget {
                           Expanded(
                             flex: 2,
                             child: ActionButton(
+                              onTap: () => HomeScreenProvider.calculate(ref),
+
                               text: "=",
-                              color: Color(0xFF1991FF),
-                              textColor: Color(0xFFB2DAFF),
+                              color: const Color(0xFF1991FF),
+                              textColor: const Color(0xFFB2DAFF),
                             ),
                           ),
                         ],

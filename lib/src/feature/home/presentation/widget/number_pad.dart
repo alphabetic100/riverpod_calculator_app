@@ -1,13 +1,15 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_calculator_app/src/core/utils/colors/app_colors.dart';
+import 'package:riverpod_calculator_app/src/feature/home/provider/home_screen_provider.dart';
 
-class NumberPad extends StatelessWidget {
+class NumberPad extends ConsumerWidget {
   const NumberPad({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -27,6 +29,8 @@ class NumberPad extends StatelessWidget {
           onTap: () {
             // Handle number pad button tap
             log("Number ${index + 1} tapped");
+
+            HomeScreenProvider.input(ref, value: (index + 1).toString());
           },
           child: Container(
             height: 50,

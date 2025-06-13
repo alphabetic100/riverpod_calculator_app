@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ActionButton extends StatelessWidget {
+class ActionButton extends ConsumerWidget {
   const ActionButton({
     super.key,
     this.onTap,
@@ -19,10 +20,10 @@ class ActionButton extends StatelessWidget {
   final double? height;
   final double? fontSize;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: onTap ?? () {},
-      child: Container(
+      child: Container( 
         width: width,
         height: height ?? 80,
         margin: const EdgeInsets.all(5),
